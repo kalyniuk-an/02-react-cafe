@@ -3,15 +3,15 @@ import css from "./App.module.css";
 
 import CafeInfo from "../CafeInfo/CafeInfo";
 import VoteOptions from "../VoteOptions/VoteOptions";
-import VoteStatus from "../VoteStats/VoteStats";
+import VoteStats from "../VoteStats/VoteStats";
 import Notification from "../Notification/Notification";
 
-import { type Votes } from "../../types/votes";
+import type { Votes, VoteType } from "../../types/votes";
 
 export default function App() {
   const [votes, setVotes] = useState<Votes>({ good: 0, neutral: 0, bad: 0 });
 
-  const handleVote = (key: keyof Votes) => {
+  const handleVote = (key: VoteType) => {
     setVotes({ ...votes, [key]: votes[key] + 1 });
   };
 
@@ -29,7 +29,7 @@ export default function App() {
       
       {
         totalVotes > 0 ?
-        (<VoteStatus votes={ votes } totalVotes={ totalVotes } positiveRate={ positiveRate }></VoteStatus>)
+        (<VoteStats votes={ votes } totalVotes={ totalVotes } positiveRate={ positiveRate }></VoteStats>)
         :
           (<Notification />)
       }
