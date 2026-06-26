@@ -25,11 +25,14 @@ export default function App() {
   return (
     <div className={css.app}>
       <CafeInfo></CafeInfo>
-      <VoteOptions onVote={handleVote} onReset={resetVotes} canReset={totalVotes > 0}></VoteOptions>
+      <VoteOptions onVote={ handleVote } onReset={ resetVotes } canReset={ totalVotes > 0}></VoteOptions>
       
-      {totalVotes>0?
-      (<VoteStatus votes={votes} totalVotes={totalVotes} positiveRate={positiveRate}></VoteStatus>):
-      (<Notification/>)}
+      {
+        totalVotes > 0 ?
+        (<VoteStatus votes={ votes } totalVotes={ totalVotes } positiveRate={ positiveRate }></VoteStatus>)
+        :
+          (<Notification />)
+      }
    </div>
   );
 }
